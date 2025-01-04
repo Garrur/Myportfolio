@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 const ContactPage = () => {
@@ -17,7 +19,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post('https://portbackend-k46l.onrender.com/api/contact', formData);
       alert('Message sent successfully!');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
@@ -62,6 +64,11 @@ const ContactPage = () => {
         ></textarea>
         <button type="submit">Send</button>
       </form>
+      <div>
+         <Link to="/"> Home</Link>
+         <Link to="/about" className="btn">About Me</Link>
+        <Link to="/projects" className="btn">My Projects</Link>
+      </div>
     </div>
   );
 };
